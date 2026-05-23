@@ -8,55 +8,102 @@
     body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; max-width: 680px; margin: 40px auto; padding: 0 24px; color: #1a1a1a; line-height: 1.6; }
     h1 { font-size: 1.5rem; margin-bottom: 0.25rem; }
     h2 { font-size: 1.1rem; margin-top: 2rem; }
+    h3 { font-size: 1rem; margin-top: 1.5rem; }
     .lang-divider { border: none; border-top: 2px solid #e0e0e0; margin: 3rem 0; }
     a { color: #0066cc; }
     .updated { color: #666; font-size: 0.9rem; }
+    .changelog p { margin: 0.4rem 0; font-size: 0.95rem; }
   </style>
 </head>
 <body>
 
   <h1>Connected? — Personvernerklæring</h1>
-  <p class="updated">Sist oppdatert: 2026-05-08</p>
+  <p class="updated">Versjon 1.4 · Ikrafttredelse: 2026-05-23</p>
+
+  <p>Denne personvernerklæringen gjelder <strong>Connected?</strong>, en nettverksdiagnostikk-app for iPhone.</p>
 
   <h2>Hva vi samler inn</h2>
-  <p>Ingenting. Connected? samler ikke inn, lagrer ikke og deler ikke personopplysninger eller bruksdata.</p>
+  <p>Ingenting. Connected? samler ikke inn personopplysninger. Appen bruker ikke analytics, telemetri, sporing, annonseidentifikatorer eller annonsenettverk. Det finnes ingen konto, ingen innlogging, ingen brukerprofil og ingen serverlagret historikk over hvordan du bruker appen. Connected? samler ikke inn navn, e-postadresse, kontakter, nettleserhistorikk, enhetsidentifikatorer for sporing eller andre personopplysninger.</p>
+
+  <h2>Ingen bakgrunns-skanning</h2>
+  <p>Connected? utfører ikke bakgrunnsskanning eller passiv overvåking. Nettverksdiagnostikk kjører bare når du selv starter den i appen. Appen skanner ikke lokalnettet i bakgrunnen, følger ikke kontinuerlig med på enheter i nærheten og overvåker ikke nettverkstrafikken din når du ikke bruker en diagnostikkfunksjon. Når appen viser tilkoblingsinformasjon eller kjører en test, skjer det som følge av en handling du selv har valgt i forgrunnen.</p>
 
   <h2>Nettverksdiagnostikk</h2>
-  <p>Alle diagnostikktester (ping, DNS-oppslag, portskanning, LAN-skanning) utføres utelukkende lokalt på enheten din. Ingen resultater sendes til eksterne servere. Nettverkstrafikk genereres kun av tester du eksplisitt starter, mot mål du selv velger.</p>
+  <p>All diagnostikk er brukerinitiert. Resultater genereres og vises på enheten din. Connected? laster ikke opp disse resultatene til utvikleren, en analytics-leverandør eller noen tredjepartstjeneste. Hvis du velger å dele et resultat, skjer delingen via iOS sitt deleark og styres av deg. Da kan mottakeren du velger få innholdet du bestemmer deg for å dele, og mottakerens egne personvernvilkår gjelder.</p>
 
-  <p>Hvis du har en aktiv VPN eller tunnel, kan Connected? oppdage dette lokalt ved å lese DNS-resolverne og den lokale IP-adressen som iOS rapporterer. Kjente tunnel-leverandører (f.eks. Tailscale, Cloudflare WARP) gjenkjennes via DNS-fingeravtrykk lagret i appen. Denne deteksjonen skjer fullstendig på enheten din — ingen informasjon om VPN- eller tunnel-konfigurasjonen din forlater enheten.</p>
+  <p>Noen diagnostikkfunksjoner krever nettverkstilgang fordi det er selve formålet med funksjonen. En DNS-test kan for eksempel spørre en DNS-resolver, en ping-test kan kontakte en vert du har skrevet inn eller valgt, og et lokalnettverktøy kan sende pakker til adresser på lokalnettet ditt. Dette er del av diagnostikken du starter. Connected? legger ikke inn en server-side proxy eller et skjult prosesseringsledd mellom deg og målet.</p>
+
+  <h2>VPN- og captive portal-deteksjon</h2>
+  <p>Connected? oppdager VPN-er og innloggings-portaler (captive portals) fullstendig på enheten. VPN- og tunnel-deteksjon bruker iOS sin nettverksstatus-informasjon og DNS-resolver-fingeravtrykk lagret inne i appen for å gjenkjenne kjente leverandører (for eksempel Tailscale eller Cloudflare WARP); ingen VPN-konfigurasjonsdetaljer, tunnel-identifikatorer eller DNS-resolver-verdier overføres ut av enheten. Captive portal-deteksjon bruker iOS sine standard tilgjengelighets-mekanismer for å avgjøre om det aktive Wi-Fi-nettverket krever innlogging; nettverksidentiteten logges eller overføres ikke.</p>
+
+  <h2>Wi-Fi-navn (SSID) og plassering</h2>
+  <p>Connected? ber om plasseringstilgang («Ved bruk av appen») kun for å lese navnet på det aktive Wi-Fi-nettverket (SSID). iOS krever Location-permission for at en app skal kunne lese SSID, og dette er den eneste grunnen til at Connected? ber om tilgangen. Avlesningen skjer kun mens nettverksdetalj-visningen er åpen i forgrunnen. SSID-en og posisjonsdata vises kun på enheten din og lagres, sendes eller deles aldri. Du kan trekke tilbake plasseringstilgangen når som helst i iOS Innstillinger; gjør du det, skjules Wi-Fi-navnefeltet.</p>
 
   <h2>Analyser og sporing</h2>
-  <p>Appen inneholder ingen analyseverktøy, ingen sporingspiksler og ingen tredjeparts SDK-er. Krasj-rapportering skjer via Apples egne verktøy (Xcode Organizer) og er underlagt Apples personvernpolicy.</p>
+  <p>Connected? inkluderer ingen analytics-SDK-er og ingen tredjeparts crash-reporter. Apple kan gi krasj- og diagnostikkinformasjon gjennom Apples egne utviklerverktøy når brukeren har aktivert deling av diagnostikk med apputviklere i iOS-innstillingene.</p>
 
-  <h2>MetricKit</h2>
-  <p>Appen bruker Apples MetricKit for lokal ytelsesmåling. Data behandles kun på enheten og forlater aldri enheten via appen.</p>
+  <h2>Apple MetricKit</h2>
+  <p>Connected? kan bruke Apples MetricKit til lokal diagnostikk under utvikling og kvalitetsarbeid. MetricKit er Apple-native, ikke en tredjeparts sporings-SDK, og Connected? holder MetricKit-informasjon lokalt med mindre en fremtidig versjon av denne policyen uttrykkelig sier noe annet.</p>
+
+  <h2>Salg av data</h2>
+  <p>Connected? selger ikke data fordi appen ikke samler inn data som kan selges. Appen deler ikke data med annonsører, datameglere, analytics-selskaper eller sosiale nettverk.</p>
 
   <h2>Kontakt og support</h2>
-  <p>Spørsmål om personvern eller support: <a href="mailto:hug-wizard-womb@duck.com">hug-wizard-womb@duck.com</a></p>
+  <p>Har du spørsmål om personvern eller trenger support: <a href="mailto:hug-wizard-womb@duck.com">hug-wizard-womb@duck.com</a></p>
+
+  <h2>Endringer</h2>
+  <p>Denne policyen kan oppdateres hvis Connected? endrer hvordan appen håndterer personvern, diagnostikk eller data. Endringer publiseres ved å oppdatere versjonsnummer, ikrafttredelsesdato og endringsloggen nedenfor.</p>
+
+  <div class="changelog">
+    <p><strong>v1.4 (2026-05-23)</strong> — Eksplisitt on-device-disclosure for VPN/tunnel-deteksjon og captive portal-deteksjon. Ingen ny datainnsamling.</p>
+    <p><strong>v1.3 (2026-05-23)</strong> — Plasseringstilgang lagt til for å lese aktivt Wi-Fi-nettverk (SSID) på enheten. Ingen ny datainnsamling.</p>
+    <p><strong>v1.2 (2026-05-21)</strong> — Connected? distribueres nå som én app; tidligere versjoner omtalte en separat gratisutgave og en betalt «Connected Pro»-utgave. Ingen endring i personvernpraksis.</p>
+  </div>
 
   <hr class="lang-divider">
 
-  <html lang="en">
-  <h1>Connected? — Privacy Policy</h1>
-  <p class="updated">Last updated: 2026-05-08</p>
+  <h1 lang="en">Connected? — Privacy Policy</h1>
+  <p class="updated">Version 1.4 · Effective date: 2026-05-23</p>
+
+  <p>This privacy policy applies to <strong>Connected?</strong>, a network diagnostics app for iPhone.</p>
 
   <h2>What we collect</h2>
-  <p>Nothing. Connected? does not collect, store, or share any personal data or usage information.</p>
+  <p>Nothing. Connected? does not collect personal data. The app does not use analytics, telemetry, tracking, advertising identifiers, or advertising networks. There is no account system, no login, no user profile, and no server-side history of your use of the app. Connected? does not collect your name, email address, contacts, browsing history, device identifiers for tracking, or any other personal information.</p>
+
+  <h2>No background scanning</h2>
+  <p>Connected? does not perform background scanning or passive monitoring. Network diagnostics only run when you explicitly start them in the app. The app does not scan your local network in the background, does not continuously watch nearby devices, and does not monitor your network traffic while you are not using a diagnostic feature. When the app shows connection information or runs a test, that action is tied to what you chose to do in the foreground.</p>
 
   <h2>Network diagnostics</h2>
-  <p>All diagnostic tests (ping, DNS lookup, port scan, LAN scan) run entirely on your device. No results are sent to external servers. Network traffic is generated only by tests you explicitly start, directed at targets you choose.</p>
+  <p>All diagnostics are user-initiated. Results are generated and displayed on your device. Connected? does not upload those results to the developer, to an analytics provider, or to any third-party service. If you choose to share a result, sharing happens through the iOS share sheet and is controlled by you. In that case, the destination you select may receive the content you decide to share, and that destination's privacy practices apply.</p>
 
-  <p>When you have an active VPN or tunnel, Connected? may detect this locally by inspecting your iOS-reported DNS resolvers and local IP address. Known tunnel vendors (e.g., Tailscale, Cloudflare WARP) are identified through DNS-server fingerprints stored in the app. This detection happens entirely on your device — no information about your VPN or tunnel configuration leaves the device.</p>
+  <p>Some diagnostics require network access by their nature. For example, a DNS test may query a DNS resolver, a ping test may contact a host you entered or selected, and a local network tool may send packets to addresses on your local network. These actions are part of the diagnostic you start. Connected? does not add a server-side proxy or hidden processing layer between you and the target.</p>
+
+  <h2>VPN and captive portal detection</h2>
+  <p>Connected? detects VPNs and captive portals entirely on-device. VPN and tunnel detection uses iOS network path information and DNS resolver fingerprints stored inside the app to identify known providers (for example Tailscale or Cloudflare WARP); no VPN configuration details, tunnel identifiers, or DNS resolver values are transmitted off the device. Captive portal detection uses standard iOS reachability mechanisms to determine whether the current Wi-Fi network requires sign-in; the network identity is not logged or transmitted.</p>
+
+  <h2>Wi-Fi name (SSID) and Location</h2>
+  <p>Connected? requests Location permission ("While Using the App") only to read the active Wi-Fi network name (SSID). iOS requires Location permission for an app to read the SSID, and that is the only reason Connected? requests this permission. This reading happens only while you have the network details view open in the foreground. The SSID and the Location reading are shown on your device and are never stored, transmitted, or shared. You can revoke Location access at any time in iOS Settings; if you do, the Wi-Fi name field is hidden.</p>
 
   <h2>Analytics and tracking</h2>
-  <p>The app contains no analytics tools, tracking pixels, or third-party SDKs. Crash reporting is handled by Apple's native tooling (Xcode Organizer) and is subject to Apple's privacy policy.</p>
+  <p>Connected? does not include analytics SDKs and does not include any third-party crash reporter. Apple may provide crash and diagnostic information through Apple-native developer tools when users have enabled sharing diagnostics with app developers in iOS settings.</p>
 
-  <h2>MetricKit</h2>
-  <p>The app uses Apple's MetricKit for local performance measurement. Data is processed on-device only and never leaves your device through the app.</p>
+  <h2>Apple MetricKit</h2>
+  <p>Connected? may use Apple's MetricKit for local diagnostics during development and quality work. MetricKit is Apple-native, not a third-party tracking SDK, and Connected? keeps MetricKit information local unless a future version of this policy explicitly says otherwise.</p>
+
+  <h2>Data sale</h2>
+  <p>Connected? does not sell data because it does not collect data to sell. It does not share data with advertisers, data brokers, analytics companies, or social networks.</p>
 
   <h2>Contact and support</h2>
-  <p>Privacy questions or support: <a href="mailto:hug-wizard-womb@duck.com">hug-wizard-womb@duck.com</a></p>
+  <p>For privacy questions or support: <a href="mailto:hug-wizard-womb@duck.com">hug-wizard-womb@duck.com</a></p>
+
+  <h2>Changes</h2>
+  <p>This policy may be updated when Connected? changes how it handles privacy, diagnostics, or data. Changes will be published by updating the version number, effective date, and the changelog below.</p>
+
+  <div class="changelog">
+    <p><strong>v1.4 (2026-05-23)</strong> — Explicit on-device disclosure added for VPN/tunnel detection and captive portal detection. No new data collection.</p>
+    <p><strong>v1.3 (2026-05-23)</strong> — Location permission added to read the active Wi-Fi network name (SSID) on-device only. No new data collection.</p>
+    <p><strong>v1.2 (2026-05-21)</strong> — Connected? is now distributed as a single app; earlier versions of this policy described a separate free edition and a paid "Connected Pro" edition. No change to privacy practices.</p>
+  </div>
 
 </body>
 </html>
