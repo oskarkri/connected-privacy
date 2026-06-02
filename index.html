@@ -18,7 +18,7 @@
 <body>
 
   <h1>Connected? — Privacy Policy</h1>
-  <p class="updated">Version 1.5 · Effective date: 2026-05-26</p>
+  <p class="updated">Version 1.6 · Effective date: 2026-06-03</p>
 
   <p>This privacy policy applies to <strong>Connected?</strong>, a network diagnostics app for iPhone.</p>
 
@@ -32,6 +32,8 @@
   <p>All diagnostics are user-initiated. Results are generated and displayed on your device. Connected? does not upload those results to the developer, to an analytics provider, or to any third-party service. If you choose to share a result, sharing happens through the iOS share sheet and is controlled by you. In that case, the destination you select may receive the content you decide to share, and that destination's privacy practices apply.</p>
 
   <p>Some diagnostics require network access by their nature. For example, a DNS test may query a DNS resolver, a ping test may contact a host you entered or selected, and a local network tool may send packets to addresses on your local network. These actions are part of the diagnostic you start. Connected? does not add a server-side proxy or hidden processing layer between you and the target.</p>
+
+  <p>The DNS test and the reverse-DNS tool deserve a specific note, because they send lookups to resolvers outside your device. When you run the DNS test, Connected? sends ordinary lookups for a few well-known test domains to the resolvers being compared: the resolver your device is already configured to use, and one reference you pick — Cloudflare (1.1.1.1), Google (8.8.8.8), Quad9 (9.9.9.9), or a custom resolver you enter. These lookups go straight to the chosen resolver — over standard DNS (UDP port 53) and, for the three built-in public resolvers, over DNS-over-HTTPS — so that provider sees the lookup and your device's IP address, under its own privacy policy. The reverse-DNS tool behaves the same way: if you select the Cloudflare option, your lookup is sent to 1.1.1.1. Connected? adds no proxy between you and the resolver, sends no identifiers, and keeps no copy of the results beyond the on-screen comparison.</p>
 
   <h2>VPN and captive portal detection</h2>
   <p>Connected? detects VPNs and captive portals entirely on-device. VPN and tunnel detection uses iOS network path information and DNS resolver fingerprints stored inside the app to identify known providers (for example Tailscale or Cloudflare WARP); no VPN configuration details, tunnel identifiers, or DNS resolver values are transmitted off the device. Captive portal detection uses standard iOS reachability mechanisms to determine whether the current Wi-Fi network requires sign-in; the network identity is not logged or transmitted.</p>
@@ -55,6 +57,7 @@
   <p>This policy may be updated when Connected? changes how it handles privacy, diagnostics, or data. Changes will be published by updating the version number, effective date, and the changelog below.</p>
 
   <div class="changelog">
+    <p><strong>v1.6 (2026-06-03)</strong> — Added a specific disclosure for the DNS test and reverse-DNS tool: lookups for built-in test domains are sent to the public resolver you select (Cloudflare, Google, or Quad9) or a custom resolver you enter, over standard DNS and DNS-over-HTTPS, so that resolver sees the lookup and your IP. No new data collection by the developer.</p>
     <p><strong>v1.5 (2026-05-26)</strong> — Language order reversed: English is now displayed first, Norwegian second. No content changes.</p>
     <p><strong>v1.4 (2026-05-23)</strong> — Explicit on-device disclosure added for VPN/tunnel detection and captive portal detection. No new data collection.</p>
     <p><strong>v1.3 (2026-05-23)</strong> — Location permission added to read the active Wi-Fi network name (SSID) on-device only. No new data collection.</p>
@@ -64,7 +67,7 @@
   <hr class="lang-divider">
 
   <h1 lang="no">Connected? — Personvernerklæring</h1>
-  <p class="updated" lang="no">Versjon 1.5 · Ikrafttredelse: 2026-05-26</p>
+  <p class="updated" lang="no">Versjon 1.6 · Ikrafttredelse: 2026-06-03</p>
 
   <div lang="no">
 
@@ -80,6 +83,8 @@
   <p>All diagnostikk er brukerinitiert. Resultater genereres og vises på enheten din. Connected? laster ikke opp disse resultatene til utvikleren, en analytics-leverandør eller noen tredjepartstjeneste. Hvis du velger å dele et resultat, skjer delingen via iOS sitt deleark og styres av deg. Da kan mottakeren du velger få innholdet du bestemmer deg for å dele, og mottakerens egne personvernvilkår gjelder.</p>
 
   <p>Noen diagnostikkfunksjoner krever nettverkstilgang fordi det er selve formålet med funksjonen. En DNS-test kan for eksempel spørre en DNS-resolver, en ping-test kan kontakte en vert du har skrevet inn eller valgt, og et lokalnettverktøy kan sende pakker til adresser på lokalnettet ditt. Dette er del av diagnostikken du starter. Connected? legger ikke inn en server-side proxy eller et skjult prosesseringsledd mellom deg og målet.</p>
+
+  <p>DNS-testen og omvendt-DNS-verktøyet fortjener en egen merknad, fordi de sender oppslag til resolvere utenfor enheten din. Når du kjører DNS-testen, sender Connected? vanlige oppslag for noen få kjente test-domener til resolverne som sammenlignes: resolveren enheten din allerede er satt opp til å bruke, og én referanse du velger — Cloudflare (1.1.1.1), Google (8.8.8.8), Quad9 (9.9.9.9), eller en egendefinert resolver du skriver inn. Oppslagene går rett til den valgte resolveren — over vanlig DNS (UDP-port 53) og, for de tre innebygde offentlige resolverne, over DNS-over-HTTPS — slik at den leverandøren ser oppslaget og enhetens IP-adresse, under sine egne personvernregler. Omvendt-DNS-verktøyet fungerer på samme måte: velger du Cloudflare-alternativet, sendes oppslaget ditt til 1.1.1.1. Connected? legger ingen proxy mellom deg og resolveren, sender ingen identifikatorer, og beholder ingen kopi av resultatene utover sammenligningen på skjermen.</p>
 
   <h2>VPN- og captive portal-deteksjon</h2>
   <p>Connected? oppdager VPN-er og innloggings-portaler (captive portals) fullstendig på enheten. VPN- og tunnel-deteksjon bruker iOS sin nettverksstatus-informasjon og DNS-resolver-fingeravtrykk lagret inne i appen for å gjenkjenne kjente leverandører (for eksempel Tailscale eller Cloudflare WARP); ingen VPN-konfigurasjonsdetaljer, tunnel-identifikatorer eller DNS-resolver-verdier overføres ut av enheten. Captive portal-deteksjon bruker iOS sine standard tilgjengelighets-mekanismer for å avgjøre om det aktive Wi-Fi-nettverket krever innlogging; nettverksidentiteten logges eller overføres ikke.</p>
@@ -103,6 +108,7 @@
   <p>Denne policyen kan oppdateres hvis Connected? endrer hvordan appen håndterer personvern, diagnostikk eller data. Endringer publiseres ved å oppdatere versjonsnummer, ikrafttredelsesdato og endringsloggen nedenfor.</p>
 
   <div class="changelog">
+    <p><strong>v1.6 (2026-06-03)</strong> — La til en egen disclosure for DNS-testen og omvendt-DNS-verktøyet: oppslag for innebygde test-domener sendes til den offentlige resolveren du velger (Cloudflare, Google eller Quad9) eller en egendefinert resolver du skriver inn, over vanlig DNS og DNS-over-HTTPS, slik at den resolveren ser oppslaget og IP-en din. Ingen ny datainnsamling fra utvikleren.</p>
     <p><strong>v1.5 (2026-05-26)</strong> — Språkrekkefølge snudd: Engelsk vises nå først, norsk etter. Ingen innholdsendringer.</p>
     <p><strong>v1.4 (2026-05-23)</strong> — Eksplisitt on-device-disclosure for VPN/tunnel-deteksjon og captive portal-deteksjon. Ingen ny datainnsamling.</p>
     <p><strong>v1.3 (2026-05-23)</strong> — Plasseringstilgang lagt til for å lese aktivt Wi-Fi-nettverk (SSID) på enheten. Ingen ny datainnsamling.</p>
