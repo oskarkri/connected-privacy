@@ -18,7 +18,7 @@
 <body>
 
   <h1>Connected? — Privacy Policy</h1>
-  <p class="updated">Version 1.6 · Effective date: 2026-06-03</p>
+  <p class="updated">Version 1.7 · Effective date: 2026-06-27</p>
 
   <p>This privacy policy applies to <strong>Connected?</strong>, a network diagnostics app for iPhone.</p>
 
@@ -39,7 +39,11 @@
   <p>Connected? detects VPNs and captive portals entirely on-device. VPN and tunnel detection uses iOS network path information and DNS resolver fingerprints stored inside the app to identify known providers (for example Tailscale or Cloudflare WARP); no VPN configuration details, tunnel identifiers, or DNS resolver values are transmitted off the device. Captive portal detection uses standard iOS reachability mechanisms to determine whether the current Wi-Fi network requires sign-in; the network identity is not logged or transmitted.</p>
 
   <h2>Wi-Fi name (SSID) and Location</h2>
-  <p>Connected? requests Location permission ("While Using the App") only to read the active Wi-Fi network name (SSID). iOS requires Location permission for an app to read the SSID, and that is the only reason Connected? requests this permission. This reading happens only while you have the network details view open in the foreground. The SSID and the Location reading are shown on your device and are never stored, transmitted, or shared. You can revoke Location access at any time in iOS Settings; if you do, the Wi-Fi name field is hidden.</p>
+  <p>Connected? requests Location permission ("While Using the App") only to read the active Wi-Fi network name (SSID). iOS requires Location permission for an app to read the SSID, and that is the only reason Connected? requests this permission. The SSID is read only while you are using a foreground feature that needs it — the network details view that displays it, and the LAN scanner. Your GPS location and the raw Location reading are never stored, transmitted, or shared, and the SSID is never transmitted or shared. The SSID is, however, recorded on your device as part of the local scan history described below, so the scanner can group devices by the network they were seen on. You can revoke Location access at any time in iOS Settings; if you do, the Wi-Fi name field is hidden and new scans can no longer be saved to per-network history.</p>
+
+  <h2>Local scan history</h2>
+  <p>The LAN scanner keeps a history of devices it has seen on your networks, so it can show what was there last time and tell you when a device that was offline comes back. This history is stored only on your device, in the app's private storage, and is excluded from iCloud and iTunes/Finder device backups — it is never uploaded to the developer or to anyone else. For each network it records the Wi-Fi name (SSID) and the subnet. For each device it records the IP address, any name or hostname the device reports about itself, a device-type guess, whether the device is your network's gateway, when it was first and last seen, and — if the device was reached through the ping watch — a last-known response time. It does not store your GPS location. History is kept for up to 360 days, and is limited to the most recent 64 devices per network and 16 networks; you can delete a single device, an entire network, or all history at any time from inside the app. If you have not granted Location access, the network name cannot be read, so new scans are not saved to per-network history.</p>
+  <p>The optional "ping to answer" watch is part of this feature. When you open a device that is currently offline and start the watch, Connected? repeatedly pings that one device — only the device you chose, and only while the app is in the foreground. When the device answers, the app continues into a live response-time monitor for that device. Both the watch and that monitor stop when you stop them, close the view, or leave the app; neither runs in the background.</p>
 
   <h2>Analytics and tracking</h2>
   <p>Connected? does not include analytics SDKs and does not include any third-party crash reporter. Apple may provide crash and diagnostic information through Apple-native developer tools when users have enabled sharing diagnostics with app developers in iOS settings.</p>
@@ -57,6 +61,7 @@
   <p>This policy may be updated when Connected? changes how it handles privacy, diagnostics, or data. Changes will be published by updating the version number, effective date, and the changelog below.</p>
 
   <div class="changelog">
+    <p><strong>v1.7 (2026-06-27)</strong> — Disclosed the LAN scanner's local scan history. For each network it stores the Wi-Fi name (SSID) and subnet; for each device the IP address, reported name or hostname, device-type guess, gateway flag, first/last-seen times, and a last-known response time if the device was reached through the ping watch. This history is stored only on your device, excluded from iCloud and iTunes/Finder backups, kept up to 360 days (most recent 64 devices per network, 16 networks), and can be deleted by you at any time. Also clarified that the SSID is recorded on-device as part of this history. No new data collection by the developer.</p>
     <p><strong>v1.6 (2026-06-03)</strong> — Added a specific disclosure for the DNS test and reverse-DNS tool: lookups for built-in test domains are sent to the public resolver you select (Cloudflare, Google, or Quad9) or a custom resolver you enter, over standard DNS and DNS-over-HTTPS, so that resolver sees the lookup and your IP. No new data collection by the developer.</p>
     <p><strong>v1.5 (2026-05-26)</strong> — Language order reversed: English is now displayed first, Norwegian second. No content changes.</p>
     <p><strong>v1.4 (2026-05-23)</strong> — Explicit on-device disclosure added for VPN/tunnel detection and captive portal detection. No new data collection.</p>
@@ -67,7 +72,7 @@
   <hr class="lang-divider">
 
   <h1 lang="no">Connected? — Personvernerklæring</h1>
-  <p class="updated" lang="no">Versjon 1.6 · Ikrafttredelse: 2026-06-03</p>
+  <p class="updated" lang="no">Versjon 1.7 · Ikrafttredelse: 2026-06-27</p>
 
   <div lang="no">
 
@@ -90,7 +95,11 @@
   <p>Connected? oppdager VPN-er og innloggings-portaler (captive portals) fullstendig på enheten. VPN- og tunnel-deteksjon bruker iOS sin nettverksstatus-informasjon og DNS-resolver-fingeravtrykk lagret inne i appen for å gjenkjenne kjente leverandører (for eksempel Tailscale eller Cloudflare WARP); ingen VPN-konfigurasjonsdetaljer, tunnel-identifikatorer eller DNS-resolver-verdier overføres ut av enheten. Captive portal-deteksjon bruker iOS sine standard tilgjengelighets-mekanismer for å avgjøre om det aktive Wi-Fi-nettverket krever innlogging; nettverksidentiteten logges eller overføres ikke.</p>
 
   <h2>Wi-Fi-navn (SSID) og plassering</h2>
-  <p>Connected? ber om plasseringstilgang («Ved bruk av appen») kun for å lese navnet på det aktive Wi-Fi-nettverket (SSID). iOS krever Location-permission for at en app skal kunne lese SSID, og dette er den eneste grunnen til at Connected? ber om tilgangen. Avlesningen skjer kun mens nettverksdetalj-visningen er åpen i forgrunnen. SSID-en og posisjonsdata vises kun på enheten din og lagres, sendes eller deles aldri. Du kan trekke tilbake plasseringstilgangen når som helst i iOS Innstillinger; gjør du det, skjules Wi-Fi-navnefeltet.</p>
+  <p>Connected? ber om plasseringstilgang («Ved bruk av appen») kun for å lese navnet på det aktive Wi-Fi-nettverket (SSID). iOS krever Location-permission for at en app skal kunne lese SSID, og dette er den eneste grunnen til at Connected? ber om tilgangen. SSID-en leses kun mens du bruker en forgrunns-funksjon som trenger den — nettverksdetalj-visningen som viser den, og LAN-skanneren. GPS-posisjonen din og selve posisjonsavlesningen lagres, sendes eller deles aldri, og SSID-en sendes eller deles aldri. SSID-en lagres derimot på enheten din som en del av den lokale skannehistorikken beskrevet nedenfor, slik at skanneren kan gruppere enheter etter nettverket de ble sett på. Du kan trekke tilbake plasseringstilgangen når som helst i iOS Innstillinger; gjør du det, skjules Wi-Fi-navnefeltet, og nye skanninger kan ikke lenger lagres i historikk per nettverk.</p>
+
+  <h2>Lokal skannehistorikk</h2>
+  <p>LAN-skanneren beholder en historikk over enheter den har sett på nettverkene dine, slik at den kan vise hva som var der sist og si fra når en enhet som var offline kommer tilbake. Denne historikken lagres kun på enheten din, i appens private lagring, og er utelatt fra iCloud- og iTunes/Finder-sikkerhetskopier — den lastes aldri opp til utvikleren eller noen andre. For hvert nettverk lagres Wi-Fi-navnet (SSID) og subnettet. For hver enhet lagres IP-adressen, eventuelt navn eller vertsnavn enheten oppgir om seg selv, et anslag på enhetstype, om enheten er nettverkets gateway, når den ble sett første og siste gang, og — hvis enheten ble nådd via «ping til svar»-overvåkingen — en sist kjent svartid. GPS-posisjonen din lagres ikke. Historikken beholdes i inntil 360 dager, og er begrenset til de 64 nyeste enhetene per nettverk og 16 nettverk; du kan når som helst slette en enkelt enhet, et helt nettverk eller hele historikken inne i appen. Har du ikke gitt plasseringstilgang, kan ikke nettverksnavnet leses, og nye skanninger lagres derfor ikke i historikk per nettverk.</p>
+  <p>Den valgfrie «ping til svar»-overvåkingen er en del av denne funksjonen. Når du åpner en enhet som er offline akkurat nå og starter overvåkingen, pinger Connected? gjentatte ganger den ene enheten — kun enheten du valgte, og kun mens appen er i forgrunnen. Når enheten svarer, fortsetter appen i en live svartids-måler for den enheten. Både overvåkingen og denne måleren stopper når du stopper dem, lukker visningen, eller forlater appen; ingen av dem kjører i bakgrunnen.</p>
 
   <h2>Analyser og sporing</h2>
   <p>Connected? inkluderer ingen analytics-SDK-er og ingen tredjeparts crash-reporter. Apple kan gi krasj- og diagnostikkinformasjon gjennom Apples egne utviklerverktøy når brukeren har aktivert deling av diagnostikk med apputviklere i iOS-innstillingene.</p>
@@ -108,6 +117,7 @@
   <p>Denne policyen kan oppdateres hvis Connected? endrer hvordan appen håndterer personvern, diagnostikk eller data. Endringer publiseres ved å oppdatere versjonsnummer, ikrafttredelsesdato og endringsloggen nedenfor.</p>
 
   <div class="changelog">
+    <p><strong>v1.7 (2026-06-27)</strong> — Beskrev LAN-skannerens lokale skannehistorikk. For hvert nettverk lagres Wi-Fi-navnet (SSID) og subnettet; for hver enhet IP-adressen, oppgitt navn eller vertsnavn, anslått enhetstype, gateway-flagg, første/siste gang sett, og en sist kjent svartid hvis enheten ble nådd via «ping til svar»-overvåkingen. Historikken lagres kun på enheten din, er utelatt fra iCloud- og iTunes/Finder-sikkerhetskopier, beholdes i inntil 360 dager (de 64 nyeste enhetene per nettverk, 16 nettverk), og kan slettes av deg når som helst. Presiserte også at SSID-en lagres på enheten som en del av denne historikken. Ingen ny datainnsamling fra utvikleren.</p>
     <p><strong>v1.6 (2026-06-03)</strong> — La til en egen disclosure for DNS-testen og omvendt-DNS-verktøyet: oppslag for innebygde test-domener sendes til den offentlige resolveren du velger (Cloudflare, Google eller Quad9) eller en egendefinert resolver du skriver inn, over vanlig DNS og DNS-over-HTTPS, slik at den resolveren ser oppslaget og IP-en din. Ingen ny datainnsamling fra utvikleren.</p>
     <p><strong>v1.5 (2026-05-26)</strong> — Språkrekkefølge snudd: Engelsk vises nå først, norsk etter. Ingen innholdsendringer.</p>
     <p><strong>v1.4 (2026-05-23)</strong> — Eksplisitt on-device-disclosure for VPN/tunnel-deteksjon og captive portal-deteksjon. Ingen ny datainnsamling.</p>
